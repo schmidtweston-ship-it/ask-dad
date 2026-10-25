@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#5a2d3a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="description" content="Ask Dad anything. He answers from what he's lived. Equal always.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <title>Ask Dad</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <header class="top">
+    <img class="logo" src="icon.svg" alt="">
+    <div>
+      <h1>Ask Dad</h1>
+      <p class="tagline">Ask Dad anything. He answers from what he’s lived.</p>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Ask Dad views">
+    <button type="button" class="tab on" data-view="ask" role="tab" aria-selected="true">Ask</button>
+    <button type="button" class="tab" data-view="open" role="tab" aria-selected="false">Open <span id="openCount" class="badge" hidden>0</span></button>
+    <button type="button" class="tab" data-view="answers" role="tab" aria-selected="false">Answers</button>
+  </nav>
+
+  <main>
+    <!-- ASK -->
+    <section id="view-ask" class="view on" role="tabpanel">
+      <p class="lead">Anything on your mind. Hard subjects welcome. No judgment. Dad answers when he’s free — from real life, not a textbook.</p>
+      <form id="askForm" class="card">
+        <label for="qText">Your question</label>
+        <textarea id="qText" name="text" rows="5" required placeholder="Write what’s on your heart…" maxlength="4000"></textarea>
+
+        <label for="qTag">Subject tag</label>
+        <div class="tag-row">
+          <select id="qTag" name="tag" aria-label="Subject tag">
+            <option value="Mental health">Mental health</option>
+            <option value="Abuse">Abuse</option>
+            <option value="Recovery">Recovery</option>
+            <option value="Loneliness">Loneliness</option>
+            <option value="Family">Family</option>
+            <option value="Music">Music</option>
+            <option value="Life" selected>Life</option>
+            <option value="Other">Other</option>
+            <option value="__custom">Custom…</option>
+          </select>
+          <input id="qTagCustom" type="text" class="hidden" maxlength="40" placeholder="Your tag" aria-label="Custom tag">
+        </div>
+
+        <button type="submit" class="btn primary">Send to Dad</button>
+        <p id="askThanks" class="thanks hidden" role="status">Got it. It’s in Dad’s inbox.</p>
+      </form>
+    </section>
+
+    <!-- OPEN (Dad inbox) -->
+    <section id="view-open" class="view" role="tabpanel" hidden>
+      <div class="dad-bar card soft">
+        <p class="dad-bar-copy"><strong>Dad mode</strong> — unlock to answer. Local only (keeps curious fingers from editing by accident). Not real security.</p>
+        <div id="dadLocked">
+          <label for="dadPin">PIN or passphrase</label>
+          <div class="pin-row">
+            <input id="dadPin" type="password" autocomplete="off" placeholder="I’m Dad">
+            <button type="button" id="dadUnlock" class="btn primary">I’m Dad</button>
+          </div>
+          <p class="hint">First unlock sets the PIN. Later unlocks need the same one. Clear in this browser’s site data to reset.</p>
+        </div>
+        <div id="dadUnlocked" class="hidden">
+          <p class="ok">Dad mode on. You can answer open questions below.</p>
+          <button type="button" id="dadLock" class="btn ghost">Lock Dad mode</button>
+        </div>
+      </div>
+      <div id="openList" class="list"></div>
+      <p id="openEmpty" class="empty hidden">No open questions. Quiet house.</p>
+    </section>
+
+    <!-- ANSWERS library -->
+    <section id="view-answers" class="view" role="tabpanel" hidden>
+      <div class="filter-row">
+        <label for="filterTag">Browse by tag</label>
+        <select id="filterTag">
+          <option value="">All answers</option>
+        </select>
+      </div>
+      <div id="answerList" class="list"></div>
+      <p id="answerEmpty" class="empty hidden">No answers yet. Ask something — Dad will fill this shelf.</p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Schmidt Family House · Equal always. Always, always, always.</p>
+    <p class="foot-note">Lived answers only. No auto-answers. No scrapes.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

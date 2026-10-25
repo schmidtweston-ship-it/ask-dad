@@ -1,0 +1,339 @@
+/* Ask Dad — warm letter desk. Not clinical. Equal always. */
+:root {
+  --cream: #fbf1e1;
+  --paper: #fff8ee;
+  --ink: #2b1a24;
+  --plum: #5a2d3a;
+  --plum-deep: #3b1d28;
+  --gold: #c9a24a;
+  --gold-soft: #e8d5a3;
+  --mute: #6b4a5c;
+  --line: rgba(90, 45, 58, 0.18);
+  --ok: #2f6b4f;
+  --shadow: 0 8px 24px rgba(59, 29, 40, 0.08);
+  --radius: 18px;
+  --font: Georgia, "Times New Roman", "Palatino Linotype", serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 18px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  position: relative;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1.1rem 1.1rem 3.5rem;
+  padding-bottom: calc(3.5rem + env(safe-area-inset-bottom, 0));
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 90% 55% at 50% -10%, rgba(201, 162, 74, 0.18), transparent 55%),
+    radial-gradient(ellipse 70% 40% at 100% 100%, rgba(90, 45, 58, 0.08), transparent 50%),
+    var(--cream);
+}
+
+.top {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.85rem;
+  color: var(--plum);
+  letter-spacing: 0.01em;
+}
+
+.tagline {
+  margin: 0.15rem 0 0;
+  color: var(--mute);
+  font-size: 0.98rem;
+  font-style: italic;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.4rem;
+  margin: 0.4rem 0 1.1rem;
+  padding: 0.3rem;
+  background: rgba(90, 45, 58, 0.06);
+  border-radius: 999px;
+}
+
+.tab {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: var(--mute);
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.65rem 0.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.tab.on {
+  background: var(--plum);
+  color: var(--cream);
+  box-shadow: var(--shadow);
+}
+
+.badge {
+  display: inline-flex;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  padding: 0 0.35rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--gold);
+  color: var(--plum-deep);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.view { display: none; }
+.view.on { display: block; }
+
+.lead {
+  color: var(--mute);
+  margin: 0 0 1rem;
+  font-size: 1.02rem;
+}
+
+.card {
+  background: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.15rem;
+  box-shadow: var(--shadow);
+}
+
+.card.soft {
+  background: rgba(255, 248, 238, 0.85);
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  color: var(--plum);
+  font-size: 0.92rem;
+  margin: 0.75rem 0 0.35rem;
+}
+
+label:first-child { margin-top: 0; }
+
+textarea,
+input[type="text"],
+input[type="password"],
+select {
+  width: 100%;
+  font: inherit;
+  color: var(--ink);
+  background: #fffaf2;
+  border: 2px solid rgba(90, 45, 58, 0.28);
+  border-radius: 14px;
+  padding: 0.75rem 0.85rem;
+}
+
+textarea { resize: vertical; min-height: 7rem; }
+
+textarea:focus,
+input:focus,
+select:focus {
+  outline: 3px solid var(--gold-soft);
+  outline-offset: 1px;
+  border-color: var(--plum);
+}
+
+.tag-row {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.btn {
+  font: inherit;
+  font-weight: 700;
+  border: 0;
+  border-radius: 14px;
+  padding: 0.85rem 1.1rem;
+  cursor: pointer;
+  margin-top: 0.9rem;
+}
+
+.btn.primary {
+  width: 100%;
+  background: var(--plum);
+  color: var(--cream);
+  box-shadow: 0 3px 0 rgba(59, 29, 40, 0.25);
+}
+
+.btn.primary:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--plum);
+  border: 2px solid var(--line);
+  width: auto;
+  margin-top: 0.5rem;
+}
+
+.btn.small {
+  width: auto;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.92rem;
+  margin-top: 0.55rem;
+}
+
+.thanks {
+  margin: 0.85rem 0 0;
+  color: var(--ok);
+  font-weight: 700;
+}
+
+.hint {
+  margin: 0.55rem 0 0;
+  color: var(--mute);
+  font-size: 0.88rem;
+}
+
+.ok { color: var(--ok); margin: 0 0 0.35rem; font-weight: 700; }
+
+.dad-bar { margin-bottom: 1rem; }
+.dad-bar-copy { margin: 0 0 0.65rem; color: var(--mute); font-size: 0.95rem; }
+
+.pin-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.pin-row input { flex: 1; }
+.pin-row .btn { margin-top: 0; width: auto; white-space: nowrap; }
+
+.list { display: flex; flex-direction: column; gap: 0.85rem; }
+
+.item {
+  background: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem 1.05rem;
+  box-shadow: var(--shadow);
+}
+
+.item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.75rem;
+  align-items: center;
+  margin-bottom: 0.45rem;
+  font-size: 0.85rem;
+  color: var(--mute);
+}
+
+.chip {
+  display: inline-block;
+  background: rgba(201, 162, 74, 0.22);
+  color: var(--plum-deep);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.q-text {
+  margin: 0;
+  font-size: 1.08rem;
+  color: var(--ink);
+}
+
+.a-block {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--line);
+}
+
+.a-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--plum);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 0.35rem;
+}
+
+.a-text {
+  margin: 0;
+  white-space: pre-wrap;
+  font-size: 1.05rem;
+}
+
+.answer-box textarea {
+  min-height: 5.5rem;
+  margin-top: 0.35rem;
+}
+
+.filter-row {
+  margin-bottom: 0.9rem;
+}
+
+.empty {
+  text-align: center;
+  color: var(--mute);
+  font-style: italic;
+  padding: 1.5rem 0.5rem;
+}
+
+.foot {
+  margin-top: 2.2rem;
+  text-align: center;
+  color: var(--mute);
+  font-size: 0.88rem;
+}
+
+.foot p { margin: 0.2rem 0; }
+.foot-note { font-style: italic; opacity: 0.9; }
+
+.hidden { display: none !important; }
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+@media (max-width: 420px) {
+  body { font-size: 17px; }
+  h1 { font-size: 1.6rem; }
+  .pin-row { flex-direction: column; }
+  .pin-row .btn { width: 100%; }
+}
